@@ -1,4 +1,4 @@
-# Uthak Pathak
+# Uthak Patak
 
 ## Commit Style 
 
