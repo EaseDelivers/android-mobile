@@ -6,37 +6,4 @@
     android:layout_height="match_parent"
     tools:context="login.LoginActivity">
 
-    <ImageView
-        android:id="@+id/loginscreen_applogo"
-        android:layout_width="179dp"
-        android:layout_height="124dp"
-        android:layout_marginTop="140dp"
-        android:src="@drawable/applogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/loginscreen_appname"
-        android:layout_width="180dp"
-        android:layout_height="123dp"
-        android:layout_marginTop="216dp"
-        android:src="@drawable/appname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/loginscreen_registerbutton"
-        android:layout_width="178dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="44dp"
-        android:text="Create Account"
-        android:textAllCaps="false"
-        android:textColor="#FF6D00"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginscreen_appname" />
 </androidx.constraintlayout.widget.ConstraintLayout>

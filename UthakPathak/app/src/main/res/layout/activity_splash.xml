@@ -5,10 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 <<<<<<< HEAD
+<<<<<<< HEAD
     tools:context=".signup.SplashActivity">
 =======
     tools:context=".SplashActivity">
 >>>>>>> master
+=======
+    tools:context=".SplashActivity">
+>>>>>>> fb86d8d2c9153ac54b6631a57ed72e76b27b0db2
 
     <ImageView
         android:id="@+id/splashscreen_applogo"
