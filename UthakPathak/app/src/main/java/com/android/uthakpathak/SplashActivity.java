@@ -6,16 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
-
-
-import com.android.uthakpathak.Authentication.LoginActivity;
-
-public class SplashActivity extends AppCompatActivity {
-
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+
+
+
+
 
 public class SplashActivity extends AppCompatActivity {
     //variable references for animation of appname and applogo

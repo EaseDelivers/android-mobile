@@ -1,4 +1,4 @@
-package signup;
+package com.android.uthakpathak.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,4 +13,5 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
     }
+
 }
