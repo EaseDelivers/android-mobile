@@ -1,6 +1,6 @@
 # Uthak Patak
 
-## Commit Style 
+## Commit Rules
 
  - Please Make Branch for Every Feature adding and commit One thing at a time 
  - Creation of Folder should be done in One Commit 

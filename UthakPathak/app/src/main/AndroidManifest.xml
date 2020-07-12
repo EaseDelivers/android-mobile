@@ -9,15 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name="login.LoginActivity"></activity>
         <activity android:name=".signup.SplashActivity">
+=======
+       
+       <activity android:name="com.android.uthakpathak.Authentication.LoginActivity"></activity>
+        <activity android:name=".SplashActivity">
+>>>>>>> master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+      
+        <activity android:name=".Splash"></activity>
+        <activity android:name=".signup.SignUp"></activity>
 
+<<<<<<< HEAD
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="signup.SignUp" />
+=======
+>>>>>>> master
     </application>
 
 </manifest>
