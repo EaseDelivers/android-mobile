@@ -1,4 +1,4 @@
-package Authentication;
+package com.android.uthakpathak.Authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
