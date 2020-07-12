@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-<<<<<<< HEAD
+
 
 
 import com.android.uthakpathak.Authentication.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
-=======
+
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -24,34 +24,32 @@ public class SplashActivity extends AppCompatActivity {
     //references to applogo and appname
     ImageView imageview_applogo;
     ImageView imageview_appname;
->>>>>>> fb86d8d2c9153ac54b6631a57ed72e76b27b0db2
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-<<<<<<< HEAD
-=======
         //method to load animations for appname and applogo
         loadAnimations();
 
->>>>>>> fb86d8d2c9153ac54b6631a57ed72e76b27b0db2
+
         //hide actionbar
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-<<<<<<< HEAD
-        //create new handler for SplashActivity
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //start the LoginActivity class for user to login
-                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-            }
-        }, 2500);//open the new Activity after a delay of 2.5s
-    }
-=======
+
+//         //create new handler for SplashActivity
+//         new Handler().postDelayed(new Runnable() {
+//             @Override
+//             public void run() {
+//                 //start the LoginActivity class for user to login
+//                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+//             }
+//         }, 2500);//open the new Activity after a delay of 2.5s
+//     }
+
         //create new handler for com.android.uthakpathak.SplashActivity
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -75,5 +73,5 @@ public class SplashActivity extends AppCompatActivity {
         imageview_applogo.startAnimation(anim_translate_lefttoright);
         imageview_appname.startAnimation(anim_translate_righttoleft);
     }
->>>>>>> fb86d8d2c9153ac54b6631a57ed72e76b27b0db2
+
 }
