@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="signup.SignUpActivity">
+    tools:context=".signup.SignUpActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -140,22 +140,26 @@
 
     <Button
         android:id="@+id/GOOGLE"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="160dp"
         android:layout_marginEnd="187dp"
         android:layout_marginBottom="94dp"
+        android:background="@drawable/rounded_corners"
         android:text="GOOGLE"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Facebook"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/Facebook"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
@@ -164,6 +168,10 @@
         android:text="FACEBOOK"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        android:background="@drawable/rounded_corners"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,8 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
- import com.android.uthakpathak.Authentication.LoginActivity;
- import com.android.uthakpathak.signup.SignUpActivity;
+
+import com.android.uthakpathak.Authentication.LoginActivity;
+import com.android.uthakpathak.signup.SignUpActivity;
+
+
 
 
 public class SelectActivity extends AppCompatActivity {
@@ -30,14 +33,17 @@ public class SelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                 //move to SignUpActivity
-                      startActivity(new Intent(SelectActivity.this, SignUpActivity.class));
+                //move to SignUpActivity
+                startActivity(new Intent(SelectActivity.this, SignUpActivity.class));
+
             }
         });
         //set onclick listener on loginbutton
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                    //move to LoginActivity
                 startActivity(new Intent(SelectActivity.this, LoginActivity.class));
 
