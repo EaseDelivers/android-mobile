@@ -1,4 +1,4 @@
-package splashscreen;
+package com.android.uthakpathak.signup;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 import com.android.uthakpathak.R;
 
-import Authentication.LoginActivity;
+import login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
     //variable references for animation of appname and applogo
