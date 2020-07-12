@@ -1,4 +1,8 @@
+<<<<<<< HEAD:UthakPathak/app/src/main/java/login/LoginActivity.java
+package login;
+=======
 package com.android.uthakpathak.Authentication;
+>>>>>>> master:UthakPathak/app/src/main/java/com/android/uthakpathak/Authentication/LoginActivity.java
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +15,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login2);
+        setContentView(R.layout.activity_login);
     }
 }

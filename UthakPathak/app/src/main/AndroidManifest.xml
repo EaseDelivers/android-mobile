@@ -9,9 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <activity android:name="login.LoginActivity"></activity>
+        <activity android:name=".signup.SplashActivity">
+=======
        
        <activity android:name="com.android.uthakpathak.Authentication.LoginActivity"></activity>
         <activity android:name=".SplashActivity">
+>>>>>>> master
+=======
+        <activity android:name=".SelectActivity"></activity>
+        <activity android:name="login.LoginActivity" />
+        <activity android:name=".SplashActivity">
+>>>>>>> fb86d8d2c9153ac54b6631a57ed72e76b27b0db2
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
@@ -20,6 +31,17 @@
         <activity android:name=".Splash"></activity>
         <activity android:name=".signup.SignUp"></activity>
 
+<<<<<<< HEAD
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+<<<<<<< HEAD
+        <activity android:name="signup.SignUp" />
+=======
+>>>>>>> master
+=======
+        <activity android:name="signup.SignUpActivity" />
+>>>>>>> fb86d8d2c9153ac54b6631a57ed72e76b27b0db2
     </application>
 
 </manifest>
