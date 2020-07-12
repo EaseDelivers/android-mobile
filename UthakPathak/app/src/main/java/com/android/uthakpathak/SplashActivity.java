@@ -1,4 +1,4 @@
-package splashscreen;
+package com.android.uthakpathak;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 
-import com.android.uthakpathak.R;
-
-import Authentication.LoginActivity;
+import com.android.uthakpathak.Authentication.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
