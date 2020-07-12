@@ -1,3 +1,5 @@
+package com.android.uthakpathak;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,11 +9,6 @@ import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-
-
-import com.android.uthakpathak.R;
-
-import login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
     //variable references for animation of appname and applogo
@@ -33,12 +30,12 @@ public class SplashActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        //create new handler for SplashActivity
+        //create new handler for com.android.uthakpathak.SplashActivity
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //start the LoginActivity class for user to login
-                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                //start the com.android.uthakpathak.SelectActivity class for user to login or register
+                startActivity(new Intent(SplashActivity.this, SelectActivity.class));
             }
         }, 2500);//open the new Activity after a delay of 2.5s
     }

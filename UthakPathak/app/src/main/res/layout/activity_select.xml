@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/selectscreen_applogo"
+        android:layout_width="179dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="140dp"
+        android:src="@drawable/applogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/selectscreen_appname"
+        android:layout_width="180dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/appname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/selectscreen_registerbutton"
+        android:layout_width="232dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_corners"
+        android:text="Create Account"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectscreen_appname" />
+
+    <Button
+        android:id="@+id/selectscreen_loginbutton"
+        android:layout_width="232dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corners"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectscreen_registerbutton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
