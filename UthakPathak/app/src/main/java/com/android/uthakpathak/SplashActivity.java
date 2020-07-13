@@ -36,17 +36,6 @@ public class SplashActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-
-//         //create new handler for SplashActivity
-//         new Handler().postDelayed(new Runnable() {
-//             @Override
-//             public void run() {
-//                 //start the LoginActivity class for user to login
-//                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-//             }
-//         }, 2500);//open the new Activity after a delay of 2.5s
-//     }
-
         //create new handler for com.android.uthakpathak.SplashActivity
         new Handler().postDelayed(new Runnable() {
             @Override

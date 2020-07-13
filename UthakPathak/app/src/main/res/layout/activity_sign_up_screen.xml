@@ -3,70 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
-
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="193dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="44dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Otp" />
 
     <ImageView
-        android:id="@+id/selectscreen_applogo"
-        android:layout_width="198dp"
-        android:layout_height="66dp"
+        android:id="@+id/signupscreen_applogo"
+        android:layout_width="211dp"
+        android:layout_height="102dp"
         android:layout_marginTop="4dp"
         android:src="@drawable/applogo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.314"
+        app:layout_constraintHorizontal_bias="0.255"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/selectscreen_appname"
-        android:layout_width="180dp"
-        android:layout_height="68dp"
+        android:id="@+id/signupscreen_appname"
+        android:layout_width="209dp"
+        android:layout_height="101dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginEnd="60dp"
         android:src="@drawable/appname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.hbb20.CountryCodePicker
         android:id="@+id/ccp"
-        android:layout_width="85dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="72dp"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="10dp"
+        app:ccpDialog_textColor="#FFFFFF"
         app:ccp_defaultNameCode="IN"
-        app:layout_constraintEnd_toStartOf="@+id/phoneText"
+        app:ccp_showNameCode="false"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_phoneno"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectscreen_applogo" />
+        app:layout_constraintTop_toBottomOf="@+id/signupscreen_applogo" />
 
     <EditText
-        android:id="@+id/phoneText"
-        android:layout_width="284dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="10dp"
+        android:id="@+id/edittext_phoneno"
+        android:layout_width="315dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
         android:hint="phone"
         android:inputType="phone"
         android:singleLine="true"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ccp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectscreen_appname" />
+        app:layout_constraintTop_toBottomOf="@+id/signupscreen_appname"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/Otp"
+        android:id="@+id/button_sendotp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="10dp"
         android:layout_marginTop="27dp"
         android:layout_marginEnd="10dp"
@@ -74,13 +67,13 @@
         android:text="Send OTP"
         android:textAllCaps="false"
         android:textColor="#ffffff"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneText" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_phoneno" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView_dividertext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="174dp"
@@ -89,38 +82,51 @@
         android:text="OR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Otp" />
+        app:layout_constraintTop_toBottomOf="@+id/button_sendotp"/>
 
     <Button
         android:id="@+id/googleButton"
-        android:drawableLeft="@drawable/google_log"
-        android:background="@drawable/social_media"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
-        android:text="Signup using GOOGLE"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/social_media"
+        android:drawableLeft="@drawable/google_log"
+        android:text="Signup using Google"
+        android:textAllCaps="false"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        ></Button>
+        app:layout_constraintTop_toBottomOf="@+id/textView_dividertext"></Button>
 
 
     <Button
         android:id="@+id/emailButton"
-        android:drawableLeft="@drawable/email_logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:text="Signup using EMAIL"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/social_media"
+        android:drawableLeft="@drawable/email_logo"
+        android:text="Signup using Email"
+        android:textAllCaps="false"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/googleButton"></Button>
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="193dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="44dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_sendotp" />
 
     <View
         android:id="@+id/divider2"
@@ -129,6 +135,6 @@
         android:layout_marginTop="44dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Otp" />
+        app:layout_constraintTop_toBottomOf="@+id/button_sendotp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
