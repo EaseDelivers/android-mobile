@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.android.uthakpathak.Authentication.SignUpScreen;
 
 
+
 public class SplashActivity extends AppCompatActivity {
     //variable references for animation of appname and applogo
     Animation anim_translate_lefttoright;
@@ -52,6 +53,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 //start the com.android.uthakpathak.SelectActivity class for user to login or register
                 startActivity(new Intent(SplashActivity.this, SignUpScreen.class));
+
             }
         }, 2500);//open the new Activity after a delay of 2.5s
     }
