@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="193dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="44dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Otp" />
+
+    <ImageView
+        android:id="@+id/selectscreen_applogo"
+        android:layout_width="198dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/applogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.314"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/selectscreen_appname"
+        android:layout_width="180dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="96dp"
+        android:src="@drawable/appname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.hbb20.CountryCodePicker
+        android:id="@+id/ccp"
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="10dp"
+        app:ccp_defaultNameCode="IN"
+        app:layout_constraintEnd_toStartOf="@+id/phoneText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectscreen_applogo" />
+
+    <EditText
+        android:id="@+id/phoneText"
+        android:layout_width="284dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="10dp"
+        android:hint="phone"
+        android:inputType="phone"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectscreen_appname" />
+
+    <Button
+        android:id="@+id/Otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/rounded_corners"
+        android:text="Send OTP"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneText" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="174dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="179dp"
+        android:text="OR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Otp" />
+
+    <Button
+        android:id="@+id/googleButton"
+        android:drawableLeft="@drawable/google_log"
+        android:background="@drawable/social_media"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:text="Signup using GOOGLE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        ></Button>
+
+
+    <Button
+        android:id="@+id/emailButton"
+        android:drawableLeft="@drawable/email_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:text="Signup using EMAIL"
+        android:background="@drawable/social_media"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleButton"></Button>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="200dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="44dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Otp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
