@@ -10,9 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-
-
-
+import com.android.uthakpathak.signup.SignUpActivity;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -53,7 +51,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //start the com.android.uthakpathak.SelectActivity class for user to login or register
-                startActivity(new Intent(SplashActivity.this, SelectActivity.class));
+                startActivity(new Intent(SplashActivity.this, SignUpActivity.class));
             }
         }, 2500);//open the new Activity after a delay of 2.5s
     }

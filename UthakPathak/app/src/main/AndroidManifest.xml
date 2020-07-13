@@ -13,8 +13,6 @@
 
         <activity android:name=".Authentication.LoginActivity"></activity>
 
-        <activity android:name=".SelectActivity"></activity>
-
         <activity android:name=".SplashActivity">
 
             <intent-filter>
