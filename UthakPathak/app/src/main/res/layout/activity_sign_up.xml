@@ -13,7 +13,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="660dp"
-        android:hint="First Name"
+        android:hint="Name"
         app:boxBackgroundMode="outline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,13 +24,14 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/firstname"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="52dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,53 +39,7 @@
         android:layout_marginTop="240dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="660dp"
-        android:hint="Last Name"
-        app:boxBackgroundMode="outline"
-        app:endIconMode="clear_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/lastname"
-            android:layout_width="match_parent"
-            android:layout_height="52dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="360dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="660dp"
-        android:hint="Phone Number"
-        app:boxBackgroundMode="outline"
-        app:endIconMode="clear_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/mobile_number"
-            android:layout_width="match_parent"
-            android:layout_height="52dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="480dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="660dp"
-        android:hint="Email Id"
+        android:hint="Email"
         app:boxBackgroundMode="outline"
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -99,79 +54,33 @@
             android:layout_height="52dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+    <Button
+        android:id="@+id/GOOGLE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="82dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="660dp"
-        android:hint="Password"
-        app:boxBackgroundMode="outline"
-        app:endIconCheckable="true"
-        app:endIconMode="password_toggle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="52dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="171dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="182dp"
-        android:layout_marginBottom="227dp"
-        android:text="Or SignUp With "
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/rounded_corners"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-    <Button
-        android:id="@+id/GOOGLE"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="187dp"
-        android:layout_marginBottom="94dp"
-        android:background="@drawable/rounded_corners"
-        android:text="GOOGLE"
-        android:textAllCaps="false"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Facebook"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/Facebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="94dp"
-        android:text="FACEBOOK"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="108dp"
+        android:text="Already have an account? Login."
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        android:background="@drawable/rounded_corners"
-        android:textAllCaps="false"
-        android:textColor="#ffffff"
-        android:textSize="20sp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GOOGLE">
 
+    </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>

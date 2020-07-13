@@ -10,9 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.android.uthakpathak.R;
-
-
-
+import com.android.uthakpathak.signup.SignUpActivity;
 
 
 public class SignUpScreen extends AppCompatActivity {
@@ -48,7 +46,7 @@ public class SignUpScreen extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                startActivity(new Intent(SignUpScreen.this, LoginActivity.class));
+                startActivity(new Intent(SignUpScreen.this, SignUpActivity.class));
 
 
             }
