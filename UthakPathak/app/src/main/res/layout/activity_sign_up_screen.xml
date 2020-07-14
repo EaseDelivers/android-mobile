@@ -31,14 +31,21 @@
         android:id="@+id/ccp"
         android:layout_width="130dp"
         android:layout_height="48dp"
-        app:ccpDialog_textColor="#FFFFFF"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="10dp"
+        app:ccpDialog_showFlag="true"
+        app:ccpDialog_showNameCode="true"
+        app:ccpDialog_showPhoneCode="true"
+        app:ccpDialog_showTitle="false"
+        app:ccpDialog_textColor="#000000"
+        app:ccp_autoDetectCountry="true"
         app:ccp_defaultNameCode="IN"
+        app:ccp_showFullName="false"
         app:ccp_showNameCode="true"
         app:layout_constraintEnd_toStartOf="@+id/edittext_phoneno"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="162dp" />
+        app:layout_constraintTop_toBottomOf="@+id/signupscreen_applogo" />
 
     <EditText
         android:id="@+id/edittext_phoneno"
