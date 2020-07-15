@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "822884293609-lt94iooe0samvp0irciv3at3o19r6gjj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.uthakpathak",
+            "certificate_hash": "0e54edb2757fa576de6ad6eaeb7ecb37d4b7d6d3"
+          }
+        },
+        {
           "client_id": "822884293609-or38h652stoj6goopn4sblpg6lnjme0g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
