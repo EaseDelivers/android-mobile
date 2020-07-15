@@ -1,21 +1,64 @@
 package com.android.uthakpathak.Authentication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.android.uthakpathak.R;
 import com.android.uthakpathak.databinding.ActivityEmailAuthenticationBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.ActionCodeSettings;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class EmailAuthentication extends AppCompatActivity {
 
     ActivityEmailAuthenticationBinding mainBinding;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainBinding=ActivityEmailAuthenticationBinding.inflate(getLayoutInflater());
+        mainBinding = ActivityEmailAuthenticationBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
+        auth = FirebaseAuth.getInstance();
+
+
+
+
+       final ActionCodeSettings actionCodeSettings
+                =ActionCodeSettings.newBuilder()
+                .setUrl("https://utha.page.link/signIn")
+                .setAndroidPackageName("com.android.uthakpathak",false,"19")
+                .setHandleCodeInApp(true)
+                .build();
+
+
+mainBinding.button.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        auth.sendSignInLinkToEmail(mainBinding.Email.getText().toString(),actionCodeSettings)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isComplete()){
+                            Toast.makeText(EmailAuthentication.this, "Verification is Done", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+});
+
+
+
+
+
+
+
+
 
     }
 }

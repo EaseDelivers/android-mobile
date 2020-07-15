@@ -54,7 +54,7 @@ public class SignUpScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(SignUpScreen.this, SignUpActivity.class));
+                startActivity(new Intent(SignUpScreen.this, EmailAuthentication.class));
             }
         });
     }
