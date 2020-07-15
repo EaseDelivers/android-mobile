@@ -11,7 +11,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.android.uthakpathak.Authentication.SignUpScreen;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -21,6 +22,9 @@ public class SplashActivity extends AppCompatActivity {
     //references to applogo and appname
     ImageView imageview_applogo;
     ImageView imageview_appname;
+    //reference of FirebaseAuth and FirebaseUser
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
 
     @Override
@@ -31,17 +35,27 @@ public class SplashActivity extends AppCompatActivity {
         //method to load animations for appname and applogo
         loadAnimations();
 
-
         //hide actionbar
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        //instantiate FirebaseAuth
+        firebaseAuth=FirebaseAuth.getInstance();
 
         //create new handler for com.android.uthakpathak.SplashActivity
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //start the com.android.uthakpathak.SelectActivity class for user to login or register
-                startActivity(new Intent(SplashActivity.this, SignUpScreen.class));
+                if(firebaseUser!=null)
+                {
+                    //start MainActivity if a user is already logged in
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                }
+                else
+                {
+                    //start the SignUpScreenActivity for user to login or register
+                    startActivity(new Intent(SplashActivity.this, SignUpScreen.class));
+                }
 
             }
         }, 2500);//open the new Activity after a delay of 2.5s
@@ -61,4 +75,11 @@ public class SplashActivity extends AppCompatActivity {
         imageview_appname.startAnimation(anim_translate_righttoleft);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //get current firebase user
+        firebaseUser=firebaseAuth.getCurrentUser();
+
+    }
 }
