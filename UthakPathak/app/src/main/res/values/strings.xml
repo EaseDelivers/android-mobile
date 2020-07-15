@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Uthak Pathak</string>
+    <string name="login_text_signUo">Already have a account ? Please login</string>
 </resources>

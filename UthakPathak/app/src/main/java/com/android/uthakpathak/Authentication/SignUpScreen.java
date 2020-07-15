@@ -32,7 +32,7 @@ public class SignUpScreen extends AppCompatActivity {
         //method for phone authentication
         phoneAuthentication();
 
-        Button GoogleSignup= findViewById(R.id.googleButton);
+        Button GoogleSignup = findViewById(R.id.googleButton);
         //hide actionbar
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -60,33 +60,31 @@ public class SignUpScreen extends AppCompatActivity {
     }
 
     //method for phone authentication
-    private void phoneAuthentication()
-    {
+    private void phoneAuthentication() {
         //get references
-        countrycode= (CountryCodePicker) findViewById(R.id.ccp);
-        button_sendotp=(Button)findViewById(R.id.button_sendotp);
-        edittext_phoneno=(EditText)findViewById(R.id.edittext_phoneno);
+        countrycode = (CountryCodePicker) findViewById(R.id.ccp);
+        button_sendotp = (Button) findViewById(R.id.button_sendotp);
+        edittext_phoneno = (EditText) findViewById(R.id.edittext_phoneno);
 
         //set onclick listener to button_sendotp
         button_sendotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ccode=countrycode.getSelectedCountryCode();
-                String edittextnumber=edittext_phoneno.getText().toString().trim();
+                String ccode = countrycode.getSelectedCountryCode();
+                String edittextnumber = edittext_phoneno.getText().toString().trim();
 
                 //check if edittext is empty or not a valid number
-                if(edittextnumber.isEmpty()||edittextnumber.length()<10)
-                {
+                if (edittextnumber.isEmpty() || edittextnumber.length() < 10) {
                     edittext_phoneno.setError("Invalid Number");
                     edittext_phoneno.requestFocus();
                     return;
                 }
                 //create complete phone number
-                String phoneno="+"+ccode+edittextnumber;
+                String phoneno = "+" + ccode + edittextnumber;
 
                 //start new activity for otp verification
-                Intent intent=new Intent(SignUpScreen.this, PhoneLoginActivity.class);
-                intent.putExtra("phoneno",phoneno);
+                Intent intent = new Intent(SignUpScreen.this, PhoneLoginActivity.class);
+                intent.putExtra("phoneno", phoneno);
                 startActivity(intent);
             }
         });
