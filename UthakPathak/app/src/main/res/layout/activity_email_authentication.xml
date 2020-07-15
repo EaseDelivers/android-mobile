@@ -7,7 +7,7 @@
     tools:context=".Authentication.EmailAuthentication">
 
     <EditText
-        android:id="@+id/Email"
+        android:id="@+id/emailauth_email"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="16dp"
@@ -20,10 +20,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Name" />
+        app:layout_constraintTop_toBottomOf="@+id/emailauth_name" />
 
     <EditText
-        android:id="@+id/Name"
+        android:id="@+id/emailauth_name"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="16dp"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/emailauth_continuebutton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -52,10 +52,10 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email" />
+        app:layout_constraintTop_toBottomOf="@+id/emailauth_email" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/emailauth_logintv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -63,5 +63,5 @@
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/emailauth_continuebutton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
