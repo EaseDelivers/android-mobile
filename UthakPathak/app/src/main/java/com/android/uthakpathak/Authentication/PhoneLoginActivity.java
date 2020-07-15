@@ -45,10 +45,10 @@ public class PhoneLoginActivity extends AppCompatActivity {
         String phoneno = getIntent().getStringExtra("phoneno");
 
         //get instance of firebase auth
-        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         //reference to progress bar and edittextgetotp
-        progressBar=findViewById(R.id.progressBar);
-        edittextgetotp=(EditText)findViewById(R.id.editext_getotp);
+        progressBar = findViewById(R.id.progressBar);
+        edittextgetotp = (EditText) findViewById(R.id.editext_getotp);
 
         //method to send verfication code
         sendVerificationCode(phoneno);
@@ -58,10 +58,9 @@ public class PhoneLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //get code entered by user
-                String code=edittextgetotp.getText().toString().trim();
+                String code = edittextgetotp.getText().toString().trim();
                 //display error message if code is empty or not valid
-                if(code.isEmpty()||code.length()<6)
-                {
+                if (code.isEmpty() || code.length() < 6) {
                     edittextgetotp.setError("Enter code");
                     edittextgetotp.requestFocus();
                     return;
@@ -96,8 +95,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             String code = phoneAuthCredential.getSmsCode();
-            if(code!=null)
-            {
+            if (code != null) {
                 //set code in edittextgetotp
                 edittextgetotp.setText(code);
                 //call method for code verification
@@ -113,32 +111,27 @@ public class PhoneLoginActivity extends AppCompatActivity {
     };
 
     //method to verify otp entered by user or automatically detected
-    private void verifyCode(String code)
-    {
-        PhoneAuthCredential phoneAuthCredential=PhoneAuthProvider.getCredential(verificationid,code);
+    private void verifyCode(String code) {
+        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(verificationid, code);
         //method to sign in with provided credentials
         signInWithCredential(phoneAuthCredential);
     }
 
     //method to sign in with given credentials
-    private void signInWithCredential(PhoneAuthCredential credential)
-    {
+    private void signInWithCredential(PhoneAuthCredential credential) {
         //sign in and add listener to it
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful())
-                        {
+                        if (task.isSuccessful()) {
                             //Start MainActivity on successful signin
-                            Intent intent=new Intent(PhoneLoginActivity.this, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            Intent intent = new Intent(PhoneLoginActivity.this, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
-                        }
-                        else
-                        {
+                        } else {
                             //display error message
-                            Toast.makeText(PhoneLoginActivity.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(PhoneLoginActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
