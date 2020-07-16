@@ -3,13 +3,12 @@ package com.android.uthakpathak.Authentication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.android.uthakpathak.MainActivity;
-import com.android.uthakpathak.R;
 import com.android.uthakpathak.databinding.ActivityEmailAuthenticationBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,13 +20,21 @@ public class EmailAuthentication extends AppCompatActivity {
     //get reference of firbase auth and aeabinding
     ActivityEmailAuthenticationBinding mainBinding;
     FirebaseAuth auth;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
+
+
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainBinding = ActivityEmailAuthenticationBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
         auth = FirebaseAuth.getInstance();
+        sharedPreferences=getSharedPreferences("email",MODE_APPEND);
+        editor=sharedPreferences.edit();
+
 
         //use actioncodesettings to create url and callback activity
         final ActionCodeSettings actionCodeSettings
@@ -48,7 +55,11 @@ public class EmailAuthentication extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isComplete()) {
                                     //show success notification
-                                    Toast.makeText(EmailAuthentication.this, "Verification is Done", Toast.LENGTH_SHORT).show();
+                                    editor.putString("email",mainBinding.emailauthEmail.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(EmailAuthentication.this, "Open Your Mail Application", Toast.LENGTH_SHORT).show();
+
+
                                 }
                             }
                         });

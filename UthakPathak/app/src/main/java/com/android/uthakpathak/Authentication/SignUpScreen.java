@@ -12,7 +12,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.android.uthakpathak.MainActivity;
+import com.android.uthakpathak.home.HomePage;
 import com.android.uthakpathak.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -154,7 +154,7 @@ public class SignUpScreen extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success,move to MainActivity
-                            startActivity(new Intent(SignUpScreen.this, MainActivity.class));
+                            startActivity(new Intent(SignUpScreen.this, HomePage.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(SignUpScreen.this, task.getException().toString(),Toast.LENGTH_LONG).show();
