@@ -32,6 +32,7 @@ public class EmailAuthentication extends AppCompatActivity {
         mainBinding = ActivityEmailAuthenticationBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
         auth = FirebaseAuth.getInstance();
+
         sharedPreferences=getSharedPreferences("email",MODE_APPEND);
         editor=sharedPreferences.edit();
 
@@ -55,9 +56,11 @@ public class EmailAuthentication extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isComplete()) {
                                     //show success notification
+
                                     editor.putString("email",mainBinding.emailauthEmail.getText().toString());
                                     editor.commit();
                                     Toast.makeText(EmailAuthentication.this, "Open Your Mail Application", Toast.LENGTH_SHORT).show();
+
 
 
                                 }

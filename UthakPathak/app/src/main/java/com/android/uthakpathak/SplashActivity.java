@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.android.uthakpathak.Authentication.SignUpScreen;
+
 import com.android.uthakpathak.home.HomePage;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -50,7 +51,9 @@ public class SplashActivity extends AppCompatActivity {
                 if(firebaseUser!=null)
                 {
                     //start MainActivity if a user is already logged in
+
                     startActivity(new Intent(SplashActivity.this, HomePage.class));
+
                 }
                 else
                 {
