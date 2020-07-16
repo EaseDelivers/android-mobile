@@ -2,17 +2,15 @@ package com.android.uthakpathak.Authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.arch.core.executor.TaskExecutor;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.android.uthakpathak.MainActivity;
+import com.android.uthakpathak.home.HomePage;
 import com.android.uthakpathak.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -126,7 +124,9 @@ public class PhoneLoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //Start MainActivity on successful signin
-                            Intent intent = new Intent(PhoneLoginActivity.this, MainActivity.class);
+
+                            Intent intent = new Intent(PhoneLoginActivity.this, HomePage.class);
+
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         } else {
