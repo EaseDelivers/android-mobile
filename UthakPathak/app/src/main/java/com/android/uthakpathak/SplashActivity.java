@@ -52,7 +52,9 @@ public class SplashActivity extends AppCompatActivity {
                 {
                     //start MainActivity if a user is already logged in
 
-                    startActivity(new Intent(SplashActivity.this, HomePage.class));
+                   Intent intent=new Intent(SplashActivity.this,HomePage.class);
+                   intent.putExtra("flag",false);
+                   startActivity(intent);
 
                 }
                 else

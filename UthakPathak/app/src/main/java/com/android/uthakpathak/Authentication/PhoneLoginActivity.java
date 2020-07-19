@@ -125,10 +125,10 @@ public class PhoneLoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             //Start MainActivity on successful signin
 
-                            Intent intent = new Intent(PhoneLoginActivity.this, HomePage.class);
-
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
+                             Intent intent = new Intent(PhoneLoginActivity.this, HomePage.class);
+                             intent.putExtra("flag",false);
+                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                             startActivity(intent);
                         } else {
                             //display error message
                             Toast.makeText(PhoneLoginActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();

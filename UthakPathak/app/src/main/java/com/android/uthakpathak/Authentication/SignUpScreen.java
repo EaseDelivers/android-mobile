@@ -156,7 +156,9 @@ public class SignUpScreen extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            startActivity(new Intent(SignUpScreen.this, HomePage.class));
+                            Intent intent =new Intent(SignUpScreen.this,HomePage.class);
+                            intent.putExtra("flag",false);
+                            startActivity(intent);
 
                         } else {
                             // If sign in fails, display a message to the user.
