@@ -52,8 +52,8 @@ public class SplashActivity extends AppCompatActivity {
                 if(firebaseUser!=null)
                 {
                     //start Homepage if a user is already logged in
-                    startActivity(new Intent(SplashActivity.this, HomePage.class));
-
+                   Intent intent=new Intent(SplashActivity.this,HomePage.class);
+                   startActivity(intent);
                 }
                 else
                 {
