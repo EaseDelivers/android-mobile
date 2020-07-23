@@ -27,19 +27,18 @@ public class HomeViewModel extends ViewModel{
 
 
     public MutableLiveData<Boolean> getAuthenticationSuccesFull() {
-
-        auth.signInWithEmailLink(Email,EmailLink).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isComplete()){
-                    authenticationSuccesFull.setValue(true);
+        if(auth.isSignInWithEmailLink(EmailLink)) {
+            auth.signInWithEmailLink(Email, EmailLink).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isComplete()) {
+                        authenticationSuccesFull.setValue(true);
+                    } else {
+                        authenticationSuccesFull.setValue(false);
+                    }
                 }
-                else{
-                    authenticationSuccesFull.setValue(false);
-                }
-            }
-        });
-
+            });
+        }
         return authenticationSuccesFull;
     }
 }

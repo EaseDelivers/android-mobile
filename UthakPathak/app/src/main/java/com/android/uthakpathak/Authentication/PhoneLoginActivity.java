@@ -126,7 +126,6 @@ public class PhoneLoginActivity extends AppCompatActivity {
                             //Start MainActivity on successful signin
 
                             Intent intent = new Intent(PhoneLoginActivity.this, HomePage.class);
-
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         } else {

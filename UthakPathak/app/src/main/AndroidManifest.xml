@@ -15,7 +15,6 @@
 
 
         <activity android:name=".Authentication.EmailAuthentication"/>
-<<<<<<< HEAD
         <activity android:name=".home.HomePage" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -24,14 +23,9 @@
                 <data
                     android:host="utha.page.link"
                     android:scheme="https"/>
-
             </intent-filter>
         </activity>
-=======
-        <activity android:name=".MainActivity" />
->>>>>>> 4bc1bc38047058d1fee02e0de568a22a7b40aeca
         <activity android:name=".Authentication.PhoneLoginActivity" />
-        <activity android:name=".Authentication.LoginActivity" />
         <activity android:name=".Authentication.SignUpScreen" />
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -40,7 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup.SignUpActivity" />
     </application>
 
 </manifest>

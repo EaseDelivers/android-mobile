@@ -29,10 +29,6 @@ public class HomePage extends AppCompatActivity {
     ActivityMainBinding mainBinding;
     HomeViewModel viewModel;
 
-
-
-
-
     @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +36,6 @@ public class HomePage extends AppCompatActivity {
         mainBinding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
         init();
-
-
 
         Intent intent=getIntent();
         emailLink=intent.getDataString();
@@ -52,7 +46,6 @@ public class HomePage extends AppCompatActivity {
 
         viewModel=new ViewModelProvider(getViewModelStore(),new HomeViewModelFactory(email,emailLink)).get(HomeViewModel.class);
 
-
         viewModel.getAuthenticationSuccesFull().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
@@ -62,29 +55,14 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if(auth.getCurrentUser()!=null)
+        {
+            mainBinding.progressBar2.setVisibility(View.INVISIBLE);
+        }
     }
 
 
     public void init(){
         auth=FirebaseAuth.getInstance();
-
     }
 }
