@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.android.uthakpathak.Authentication.SignUpScreen;
 
+import com.android.uthakpathak.VehicleType.VehicleType;
 import com.android.uthakpathak.home.HomePage;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
