@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -51,10 +52,9 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 if(firebaseUser!=null)
                 {
-                    //start MainActivity if a user is already logged in
-
-                    startActivity(new Intent(SplashActivity.this, HomePage.class));
-
+                    //start Homepage if a user is already logged in
+                   Intent intent=new Intent(SplashActivity.this,HomePage.class);
+                   startActivity(intent);
                 }
                 else
                 {

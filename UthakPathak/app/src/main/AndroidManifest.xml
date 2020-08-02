@@ -27,7 +27,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Authentication.PhoneLoginActivity" />
-        <activity android:name=".Authentication.LoginActivity" />
         <activity android:name=".Authentication.SignUpScreen" />
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -36,7 +35,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup.SignUpActivity" />
     </application>
 
 </manifest>

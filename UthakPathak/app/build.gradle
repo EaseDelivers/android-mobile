@@ -41,6 +41,7 @@ dependencies {
 
     //for country code picker
     implementation 'com.hbb20:ccp:2.4.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
 
 
     //Realm Dependency
