@@ -50,6 +50,7 @@ public class EmailAuthentication extends AppCompatActivity {
         mainBinding.emailauthContinuebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //send verification link to email
                 auth.sendSignInLinkToEmail(mainBinding.emailauthEmail.getText().toString(), actionCodeSettings)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

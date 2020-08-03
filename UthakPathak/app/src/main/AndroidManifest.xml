@@ -11,11 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VehicleType.VehicleType"></activity>
 
 
-        <activity android:name=".Authentication.EmailAuthentication" />
-        <activity android:name=".home.HomePage">
+
+        <activity android:name=".Authentication.EmailAuthentication"/>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b6cde2bcf51fb5cf2ff4d3fc51fd06f5b8b4286
+        <activity android:name=".home.HomePage" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -23,9 +27,13 @@
                 <data
                     android:host="utha.page.link"
                     android:scheme="https"/>
-
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9b6cde2bcf51fb5cf2ff4d3fc51fd06f5b8b4286
         <activity android:name=".Authentication.PhoneLoginActivity" />
         <activity android:name=".Authentication.SignUpScreen" />
         <activity android:name=".SplashActivity">
