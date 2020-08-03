@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Uthak Pathak</string>
     <string name="login_text_signUo">Already have a account ? Please login</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="google_maps_API_key">AIzaSyA_xCMiOYJqSzGxXlfVsi0dClikmX4-2KU</string>
 </resources>

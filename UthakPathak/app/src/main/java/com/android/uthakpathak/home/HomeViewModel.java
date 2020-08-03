@@ -26,6 +26,7 @@ public class HomeViewModel extends ViewModel{
     }
 
 
+    //method to sign in with emaillink
     public MutableLiveData<Boolean> getAuthenticationSuccesFull() {
         if(auth.isSignInWithEmailLink(EmailLink)) {
             auth.signInWithEmailLink(Email, EmailLink).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".home.HomePage">
 
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mapfragment"
+        tools:context=".MapsActivity"
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyle"
@@ -15,4 +24,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/pickup_loc_edt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#fff"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:elevation="10dp"
+        android:textCursorDrawable="@null"
+        android:ems="10"
+        android:padding="10dp"
+        android:hint="Enter Pickup Location"
+        android:inputType="textPersonName"
+        android:textColor="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mapfragment" />
+
+    <EditText
+        android:id="@+id/drop_loc_edt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:background="#fff"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:elevation="10dp"
+        android:ems="10"
+        android:hint="Enter Drop Location"
+        android:textColor="#000"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textCursorDrawable="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pickup_loc_edt" />
 </androidx.constraintlayout.widget.ConstraintLayout>
