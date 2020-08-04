@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import com.android.uthakpathak.Authentication.SignUpScreen;
 
+import com.android.uthakpathak.VehicleType.NavigationDrawer;
 import com.android.uthakpathak.VehicleType.VehicleType;
 import com.android.uthakpathak.home.HomePage;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,7 +54,7 @@ public class SplashActivity extends AppCompatActivity {
                 if(firebaseUser!=null)
                 {
                     //start Homepage if a user is already logged in
-                   Intent intent=new Intent(SplashActivity.this,HomePage.class);
+                   Intent intent=new Intent(SplashActivity.this, NavigationDrawer.class);
                    startActivity(intent);
                 }
                 else
