@@ -21,7 +21,8 @@
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA_xCMiOYJqSzGxXlfVsi0dClikmX4-2KU"/>
 
-
+<activity android:name=".VehicleType.NavigationDrawer"
+    android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Authentication.EmailAuthentication"/>
         <activity android:name=".home.HomePage" >
             <intent-filter>
