@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".home.HomePage">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <fragment
+        android:id="@+id/mapfragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mapfragment"
         tools:context=".MapsActivity"
-        android:name="com.google.android.gms.maps.SupportMapFragment"/>
-
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-25dp" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -25,43 +26,77 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/pickup_loc_edt"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:background="#fff"
-        android:drawableLeft="@android:drawable/ic_menu_search"
-        android:elevation="10dp"
-        android:textCursorDrawable="@null"
-        android:ems="10"
-        android:padding="10dp"
-        android:hint="Enter Pickup Location"
-        android:inputType="textPersonName"
-        android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mapfragment" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/drop_loc_edt"
+        <Button
+            android:id="@+id/pickup_loc_bt"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:background="#fff"
+            android:elevation="10dp"
+            android:gravity="left"
+            android:hint="Enter pickup location"
+            android:padding="10dp"
+            android:textSize="12sp" />
+
+        <ImageButton
+            android:id="@+id/pickup_cur_loc"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:layout_toRightOf="@id/pickup_loc_bt"
+            android:background="#fff"
+            android:src="@android:drawable/ic_menu_mylocation">
+
+        </ImageButton>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:background="#fff"
-        android:drawableLeft="@android:drawable/ic_menu_search"
-        android:elevation="10dp"
-        android:ems="10"
-        android:hint="Enter Drop Location"
-        android:textColor="#000"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:textCursorDrawable="@null"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pickup_loc_edt" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <Button
+            android:id="@+id/drop_loc_bt"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:background="#fff"
+            android:elevation="10dp"
+            android:gravity="left"
+            android:hint="Enter pickup location"
+            android:padding="10dp"
+            android:textSize="12sp" />
+
+        <ImageButton
+            android:id="@+id/drop_cur_loc"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:elevation="10dp"
+            android:layout_toRightOf="@id/drop_loc_bt"
+            android:background="#fff"
+            android:src="@android:drawable/ic_menu_mylocation">
+
+        </ImageButton>
+    </RelativeLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
