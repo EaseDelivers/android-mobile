@@ -60,7 +60,7 @@ public class SplashActivity extends AppCompatActivity {
                 else
                 {
                     //start the SignUpScreenActivity for user to login or register
-                    startActivity(new Intent(SplashActivity.this, SignUpScreen.class));
+                    startActivity(new Intent(SplashActivity.this, HomePage.class));
                 }
 
             }
