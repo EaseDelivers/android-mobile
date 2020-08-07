@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.android.uthakpathak.R;
 import com.android.uthakpathak.databinding.ActivityMainBinding;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -38,6 +39,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.libraries.places.widget.Autocomplete;
@@ -99,9 +102,14 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
         //method call to check location permissions
         getLocationPermissions();
 
-        //initialize place sdk
-        Places.initialize(getApplicationContext(),getResources().getString(R.string.google_api_key));
+        String api=getString(R.string.google_maps_API_key);
 
+        //initialize place sdk
+        if(!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), api);
+        }
+
+        PlacesClient placesClient=Places.createClient(this);
     }
 
     //ask for permissions granted to app
@@ -234,6 +242,7 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
                     startActivityForResult(intent,200);
                 }
                 catch (Exception e){
+                    Log.d("PLACESAPI",e.getMessage());
                     e.printStackTrace();
                 }
             }
@@ -250,7 +259,7 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
                 }
                 catch (Exception e){
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                    Log.d("PLACESAPI",e.getMessage());
                 }
             }
         });
@@ -287,23 +296,25 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
                 Place place = Autocomplete.getPlaceFromIntent(data);
                 String name = place.getName();
                 mainBinding.pickupLocBt.setTag(name);
-                if(!(mainBinding.dropLocBt.getText().toString().isEmpty())){
-                    drawTrack(mainBinding.pickupLocBt.getText().toString(),mainBinding.dropLocBt.getText().toString());
-                }
-                else
-                {
-                    moveCamera(place.getLatLng(),DEFAULT_ZOOM,place.getName());
+                if (!(mainBinding.dropLocBt.getText().toString().isEmpty())) {
+                    drawTrack(mainBinding.pickupLocBt.getText().toString(), mainBinding.dropLocBt.getText().toString());
+                } else {
+                    moveCamera(place.getLatLng(), DEFAULT_ZOOM, place.getName());
                     mainBinding.dropLocBt.requestFocus();
                 }
+            } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+                Status status = Autocomplete.getStatusFromIntent(data);
+                Toast.makeText(HomePage.this, "Error: " + status.getStatusMessage(), Toast.LENGTH_LONG).show();
+                Log.i(TAG, status.getStatusMessage());
             }
+        }
 
-            if(requestCode==400){
-                if(resultCode==RESULT_OK) {
-                    Place place = Autocomplete.getPlaceFromIntent(data);
-                    String name = place.getName();
-                    mainBinding.dropLocBt.setText(name);
-                    drawTrack(mainBinding.pickupLocBt.getText().toString(),mainBinding.dropLocBt.getText().toString());
-                }
+        if(requestCode==400){
+            if(resultCode==RESULT_OK) {
+                Place place = Autocomplete.getPlaceFromIntent(data);
+                String name = place.getName();
+                mainBinding.dropLocBt.setText(name);
+                drawTrack(mainBinding.pickupLocBt.getText().toString(),mainBinding.dropLocBt.getText().toString());
             }
         }
     }
