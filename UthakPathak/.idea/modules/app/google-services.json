@@ -1,10 +1,72 @@
 {
   "project_info": {
-    "project_number": "553322473843",
-    "firebase_url": "https://uthak-pathak-f9e69.firebaseio.com",
-    "project_id": "uthak-pathak-f9e69",
-    "storage_bucket": "uthak-pathak-f9e69.appspot.com"
+    "project_number": "822884293609",
+    "firebase_url": "https://uthak-pathak.firebaseio.com",
+    "project_id": "uthak-pathak",
+    "storage_bucket": "uthak-pathak.appspot.com"
   },
-  "client": [],
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822884293609:android:da502f69386c7effee8978",
+        "android_client_info": {
+          "package_name": "com.android.uthakpathak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822884293609-49ueg0odsejlfa4pq3l15bamocanm606.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.uthakpathak",
+            "certificate_hash": "7dabe30a9a60df3dfe4a29b43235f76df53e14b1"
+          }
+        },
+        {
+          "client_id": "822884293609-n0e123q0d41mjqlje1k7qmvq20i3l526.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.uthakpathak",
+            "certificate_hash": "ab62d6b18ff6fce4e1408b7c44a7b71b02719c43"
+          }
+        },
+        {
+          "client_id": "822884293609-lt94iooe0samvp0irciv3at3o19r6gjj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.uthakpathak",
+            "certificate_hash": "0e54edb2757fa576de6ad6eaeb7ecb37d4b7d6d3"
+          }
+        },
+        {
+          "client_id": "822884293609-or38h652stoj6goopn4sblpg6lnjme0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.uthakpathak",
+            "certificate_hash": "4b76ea4253a10f4866d4528ea2f10b6b00b467c2"
+          }
+        },
+        {
+          "client_id": "822884293609-41cvhnpe9q6d54vqt2ol9lubr11p3qfh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArAmyQs6W3lRHpQWnu2V32djLSfnD55DQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822884293609-41cvhnpe9q6d54vqt2ol9lubr11p3qfh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
   "configuration_version": "1"
 }
