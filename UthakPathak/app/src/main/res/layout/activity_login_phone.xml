@@ -13,7 +13,8 @@
         android:layout_marginTop="68dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Enter OTP"
+        android:hint="Enter OTP"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         android:layout_height="47dp"
         android:layout_marginTop="28dp"
         android:text="Login"
+        android:textColor="#ffffff"
         android:background="@drawable/rounded_corners"
         android:textAllCaps="false"
         android:textSize="18sp"

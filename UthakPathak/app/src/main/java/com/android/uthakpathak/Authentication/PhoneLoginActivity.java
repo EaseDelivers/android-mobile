@@ -59,7 +59,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
                 String code = edittextgetotp.getText().toString().trim();
                 //display error message if code is empty or not valid
                 if (code.isEmpty() || code.length() < 6) {
-                    edittextgetotp.setError("Enter code");
+                    edittextgetotp.setError("Enter OTP");
                     edittextgetotp.requestFocus();
                     return;
                 }
