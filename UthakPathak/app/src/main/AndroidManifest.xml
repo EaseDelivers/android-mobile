@@ -20,7 +20,9 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDmpikgVq60iecXHk3jqXNYGb1sNT0Vx0I" />
+            android:value="AIzaSyAHYwCBtL0kLonHKmb86VdqtWm1AmR6nTw" />
+
+
 
         <activity android:name=".Authentication.EmailAuthentication" />
 

@@ -1,13 +1,5 @@
 package com.android.uthakpathak.home;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -21,8 +13,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.android.uthakpathak.R;
 import com.android.uthakpathak.databinding.ActivityMainBinding;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -38,16 +39,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.android.libraries.places.widget.Autocomplete;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class HomePage extends AppCompatActivity implements OnMapReadyCallback,TaskLoadedCallback {
+public class HomePage extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallback {
     final String TAG = "MainActivity";
     FirebaseAuth auth;
     String emailLink, email;
@@ -66,7 +69,9 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
     private GoogleMap googleMap;
     private FusedLocationProviderClient fusedLocationProviderClient;
     Boolean permission_granted;
-    MarkerOptions place1,place2;
+    MarkerOptions place1, place2;
+    PlacesClient client;
+
 
     @SuppressLint("WrongConstant")
     @Override
@@ -100,7 +105,9 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
         getLocationPermissions();
 
         //initialize place sdk
-        Places.initialize(getApplicationContext(),getResources().getString(R.string.google_api_key));
+        Places.initialize(getApplicationContext(), "AIzaSyAHYwCBtL0kLonHKmb86VdqtWm1AmR6nTw");
+        client = Places.createClient(HomePage.this);
+
 
     }
 
@@ -153,7 +160,7 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
         if (permission_granted) {
             //set current location on pickup button
             getDeviceLocation(1);
-            if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
             googleMap.setMyLocationEnabled(true);
@@ -167,6 +174,9 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         try {
             if (permission_granted) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    
+                }
                 final Task location = fusedLocationProviderClient.getLastLocation();
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
@@ -185,14 +195,11 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
                                 if (reqtype == 1) {
                                     mainBinding.pickupLocBt.setText(address.getAddressLine(0));
                                     moveCamera(new LatLng(curr_location.getLatitude(), curr_location.getLongitude()), DEFAULT_ZOOM, "My Location");
-                                }
-                                else if(reqtype==2){
+                                } else if (reqtype == 2) {
                                     mainBinding.dropLocBt.setText(address.getAddressLine(0));
-                                }
-                                else if(reqtype==3){
+                                } else if (reqtype == 3) {
                                     mainBinding.pickupLocBt.setText(address.getAddressLine(0));
-                                }
-                                else {
+                                } else {
                                     Toast.makeText(HomePage.this, "Unable to get current location", Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -200,41 +207,38 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
                     }
                 });
             }
-        }catch (SecurityException e){
+        } catch (Exception e) {
+            Toast.makeText(this, e.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
         }
     }
 
     //set map to a particular location
-    private void moveCamera(LatLng latLng, Float zoom, String title)
-    {
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,zoom));
+    private void moveCamera(LatLng latLng, Float zoom, String title) {
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
-        if(current_marker!=null){
+        if (current_marker != null) {
             current_marker.setPosition(latLng);
-        }
-        else {
+        } else {
             //create a marker and add to map
-            MarkerOptions options=new MarkerOptions()
+            MarkerOptions options = new MarkerOptions()
                     .position(latLng)
                     .title(title);
-            current_marker=googleMap.addMarker(options);
+            current_marker = googleMap.addMarker(options);
         }
     }
 
     //set onclick listener on buttons
-    private void initialize()
-    {
+    private void initialize() {
         //set onclick listener on pickup button
         mainBinding.pickupLocBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME,Place.Field.LAT_LNG);
-                    Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY,fields).build(HomePage.this);
-                    startActivityForResult(intent,200);
-                }
-                catch (Exception e){
-                    e.printStackTrace();
+                    List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
+                    Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields).build(HomePage.this);
+                    startActivityForResult(intent, 200);
+                } catch (Exception e) {
+                    Toast.makeText(HomePage.this, e.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -244,13 +248,14 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
             @Override
             public void onClick(View view) {
                 try {
-                    List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME,Place.Field.LAT_LNG);
-                    Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY,fields).build(HomePage.this);
-                    startActivityForResult(intent,400);
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                    List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
+                    Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
+                            .build(HomePage.this);
+                    startActivityForResult(intent, 400);
+
+                } catch (Exception e) {
+
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -258,14 +263,12 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
         mainBinding.pickupCurLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mainBinding.dropLocBt.getText().toString().isEmpty()){
+                if (mainBinding.dropLocBt.getText().toString().isEmpty()) {
                     getDeviceLocation(1);
                     mainBinding.dropLocBt.requestFocus();
-                }
-                else
-                {
+                } else {
                     getDeviceLocation(3);
-                    drawTrack(mainBinding.pickupLocBt.getText().toString(),mainBinding.dropLocBt.getText().toString());
+                    drawTrack(mainBinding.pickupLocBt.getText().toString(), mainBinding.dropLocBt.getText().toString());
                 }
             }
         });
@@ -274,7 +277,7 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
             @Override
             public void onClick(View view) {
                 getDeviceLocation(2);
-                drawTrack(mainBinding.pickupLocBt.getText().toString(),mainBinding.dropLocBt.getText().toString());
+                drawTrack(mainBinding.pickupLocBt.getText().toString(), mainBinding.dropLocBt.getText().toString());
             }
         });
     }
@@ -287,67 +290,66 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback,Ta
                 Place place = Autocomplete.getPlaceFromIntent(data);
                 String name = place.getName();
                 mainBinding.pickupLocBt.setTag(name);
-                if(!(mainBinding.dropLocBt.getText().toString().isEmpty())){
-                    drawTrack(mainBinding.pickupLocBt.getText().toString(),mainBinding.dropLocBt.getText().toString());
-                }
-                else
-                {
-                    moveCamera(place.getLatLng(),DEFAULT_ZOOM,place.getName());
+                if (!(mainBinding.dropLocBt.getText().toString().isEmpty())) {
+                    drawTrack(mainBinding.pickupLocBt.getText().toString(), mainBinding.dropLocBt.getText().toString());
+                } else {
+                    moveCamera(place.getLatLng(), DEFAULT_ZOOM, place.getName());
                     mainBinding.dropLocBt.requestFocus();
                 }
             }
 
-            if(requestCode==400){
-                if(resultCode==RESULT_OK) {
+            if (requestCode == 400) {
+                if (resultCode == RESULT_OK) {
                     Place place = Autocomplete.getPlaceFromIntent(data);
                     String name = place.getName();
                     mainBinding.dropLocBt.setText(name);
-                    drawTrack(mainBinding.pickupLocBt.getText().toString(),mainBinding.dropLocBt.getText().toString());
+                } else if (resultCode == AutocompleteActivity.RESULT_CANCELED) {
+                    Status status = Autocomplete.getStatusFromIntent(data);
+                    Toast.makeText(HomePage.this, "Error: " + status.getStatusMessage(), Toast.LENGTH_LONG).show();
+                    Log.i(TAG, status.getStatusMessage());
                 }
             }
         }
     }
 
-    private void drawTrack(String source,String Destination){
-        Geocoder geocoder=new Geocoder(this);
-        List<Address> srcaddress=new ArrayList<>();
-        try{
-            srcaddress=geocoder.getFromLocationName(source,1);
+    private void drawTrack(String source, String Destination) {
+        Geocoder geocoder = new Geocoder(this);
+        List<Address> srcaddress = new ArrayList<>();
+        try {
+            srcaddress = geocoder.getFromLocationName(source, 1);
+        } catch (IOException e) {
         }
-        catch (IOException e){}
-        List<Address> destaddress=new ArrayList<>();
-        try{
-            destaddress=geocoder.getFromLocationName(Destination,1);
+        List<Address> destaddress = new ArrayList<>();
+        try {
+            destaddress = geocoder.getFromLocationName(Destination, 1);
+        } catch (IOException e) {
         }
-        catch (IOException e){}
 
-        if(srcaddress.size()>0&&destaddress.size()>0) {
+        if (srcaddress.size() > 0 && destaddress.size() > 0) {
             place1 = new MarkerOptions().position(new LatLng(srcaddress.get(0).getLatitude(), srcaddress.get(0).getLongitude())).
                     title(mainBinding.pickupLocBt.getText().toString());
-            place2=new MarkerOptions().position(new LatLng(destaddress.get(0).getLatitude(), destaddress.get(0).getLongitude())).
+            place2 = new MarkerOptions().position(new LatLng(destaddress.get(0).getLatitude(), destaddress.get(0).getLongitude())).
                     title(mainBinding.dropLocBt.getText().toString());
             new FetchURL(HomePage.this)
-                    .execute(getUrl(place1.getPosition(),place2.getPosition(),"driving"),"driving");
+                    .execute(getUrl(place1.getPosition(), place2.getPosition(), "driving"), "driving");
         }
     }
 
-    private String getUrl(LatLng origin,LatLng dest,String drivingmode)
-    {
-        String str_origin="origin="+origin.latitude+","+origin.longitude;
-        String str_dest="destination="+dest.latitude+","+dest.longitude;
-        String mode="mode="+drivingmode;
-        String param=str_origin+"&"+str_dest+"&"+mode;
-        String format="json";
-        String url="https://maps.googleapis.com/maps/api/directions/"+format+"?"+param+"&key=AIzaSyA_xCMiOYJqSzGxXlfVsi0dClikmX4-2KU";
+    private String getUrl(LatLng origin, LatLng dest, String drivingmode) {
+        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
+        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
+        String mode = "mode=" + drivingmode;
+        String param = str_origin + "&" + str_dest + "&" + mode;
+        String format = "json";
+        String url = "https://maps.googleapis.com/maps/api/directions/" + format + "?" + param + "&key=AIzaSyAHYwCBtL0kLonHKmb86VdqtWm1AmR6nTw";
         return url;
     }
 
     @Override
     public void onTaskDone(Object... values) {
-        if(polyline!=null)
-        {
+        if (polyline != null) {
             polyline.remove();
         }
-        polyline=googleMap.addPolyline((PolylineOptions) values[0]);
+        polyline = googleMap.addPolyline((PolylineOptions) values[0]);
     }
 }
