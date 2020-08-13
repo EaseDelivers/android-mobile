@@ -104,9 +104,13 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
         //method call to check location permissions
         getLocationPermissions();
 
+        String api=getString(R.string.google_maps_API_key);
+
         //initialize place sdk
+
         Places.initialize(getApplicationContext(), "AIzaSyAHYwCBtL0kLonHKmb86VdqtWm1AmR6nTw");
         client = Places.createClient(HomePage.this);
+
 
 
     }
@@ -234,12 +238,15 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
             @Override
             public void onClick(View view) {
                 try {
+
                     List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
                     Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields).build(HomePage.this);
                     startActivityForResult(intent, 200);
                 } catch (Exception e) {
                     Toast.makeText(HomePage.this, e.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
+
                 }
+
             }
         });
 
@@ -248,6 +255,7 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
             @Override
             public void onClick(View view) {
                 try {
+
                     List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
                     Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
                             .build(HomePage.this);
@@ -256,6 +264,7 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
                 } catch (Exception e) {
 
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
                 }
             }
         });
@@ -296,19 +305,25 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
                     moveCamera(place.getLatLng(), DEFAULT_ZOOM, place.getName());
                     mainBinding.dropLocBt.requestFocus();
                 }
+            } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+                Status status = Autocomplete.getStatusFromIntent(data);
+                Toast.makeText(HomePage.this, "Error: " + status.getStatusMessage(), Toast.LENGTH_LONG).show();
+                Log.i(TAG, status.getStatusMessage());
+            }
+        }
+
+
+        if (requestCode == 400) {
+            if (resultCode == RESULT_OK) {
+                Place place = Autocomplete.getPlaceFromIntent(data);
+                String name = place.getName();
+                mainBinding.dropLocBt.setText(name);
+            } else if (resultCode == AutocompleteActivity.RESULT_CANCELED) {
+                Status status = Autocomplete.getStatusFromIntent(data);
+                Toast.makeText(HomePage.this, "Error: " + status.getStatusMessage(), Toast.LENGTH_LONG).show();
+                Log.i(TAG, status.getStatusMessage());
             }
 
-            if (requestCode == 400) {
-                if (resultCode == RESULT_OK) {
-                    Place place = Autocomplete.getPlaceFromIntent(data);
-                    String name = place.getName();
-                    mainBinding.dropLocBt.setText(name);
-                } else if (resultCode == AutocompleteActivity.RESULT_CANCELED) {
-                    Status status = Autocomplete.getStatusFromIntent(data);
-                    Toast.makeText(HomePage.this, "Error: " + status.getStatusMessage(), Toast.LENGTH_LONG).show();
-                    Log.i(TAG, status.getStatusMessage());
-                }
-            }
         }
     }
 
