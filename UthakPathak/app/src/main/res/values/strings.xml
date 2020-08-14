@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Uthak Pathak</string>
     <string name="login_text_signUo">Already have a account ? Please login</string>
-    <string name="google_maps_API_key">AIzaSyDmpikgVq60iecXHk3jqXNYGb1sNT0Vx0I</string>
+    <string name="google_maps_API_key">AIzaSyDya2vC7YMr7nl2FWz-AUM_Pv8ck1YxkiE</string>
     <string name="open">open</string>
     <string name="close">close</string>
 </resources>

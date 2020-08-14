@@ -51,6 +51,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class HomePage extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallback {
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    private static final int LOC_PERMISSION_REQ_CODE = 1234;
+    private static final Float DEFAULT_ZOOM = 15f;
+    private static int SRC_REQ_CODE = 1;
+    private static int DEST_REQ_CODE = 2;
     final String TAG = "MainActivity";
     FirebaseAuth auth;
     String emailLink, email;
@@ -59,19 +65,11 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
     HomeViewModel viewModel;
     Polyline polyline;
     Marker current_marker;
-
-    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
-    private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
-    private static final int LOC_PERMISSION_REQ_CODE = 1234;
-    private static int SRC_REQ_CODE = 1;
-    private static int DEST_REQ_CODE = 2;
-    private static final Float DEFAULT_ZOOM = 15f;
-    private GoogleMap googleMap;
-    private FusedLocationProviderClient fusedLocationProviderClient;
     Boolean permission_granted;
     MarkerOptions place1, place2;
     PlacesClient client;
-
+    private GoogleMap googleMap;
+    private FusedLocationProviderClient fusedLocationProviderClient;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -104,13 +102,12 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
         //method call to check location permissions
         getLocationPermissions();
 
-        String api=getString(R.string.google_maps_API_key);
+        String api = getString(R.string.google_maps_API_key);
 
         //initialize place sdk
 
-        Places.initialize(getApplicationContext(), "AIzaSyAHYwCBtL0kLonHKmb86VdqtWm1AmR6nTw");
+        Places.initialize(getApplicationContext(), api);
         client = Places.createClient(HomePage.this);
-
 
 
     }
@@ -179,7 +176,7 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
         try {
             if (permission_granted) {
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    
+
                 }
                 final Task location = fusedLocationProviderClient.getLastLocation();
                 location.addOnCompleteListener(new OnCompleteListener() {
@@ -257,7 +254,7 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
                 try {
 
                     List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG);
-                    Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
+                    Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
                             .build(HomePage.this);
                     startActivityForResult(intent, 400);
 
@@ -298,6 +295,7 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
             if (resultCode == RESULT_OK) {
                 Place place = Autocomplete.getPlaceFromIntent(data);
                 String name = place.getName();
+                
                 mainBinding.pickupLocBt.setTag(name);
                 if (!(mainBinding.dropLocBt.getText().toString().isEmpty())) {
                     drawTrack(mainBinding.pickupLocBt.getText().toString(), mainBinding.dropLocBt.getText().toString());
@@ -318,6 +316,7 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback, T
                 Place place = Autocomplete.getPlaceFromIntent(data);
                 String name = place.getName();
                 mainBinding.dropLocBt.setText(name);
+                moveCamera(place.getLatLng(),DEFAULT_ZOOM,place.getName());
             } else if (resultCode == AutocompleteActivity.RESULT_CANCELED) {
                 Status status = Autocomplete.getStatusFromIntent(data);
                 Toast.makeText(HomePage.this, "Error: " + status.getStatusMessage(), Toast.LENGTH_LONG).show();
